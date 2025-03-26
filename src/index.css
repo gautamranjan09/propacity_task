@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+*{
+  font-family: "inter", sans-serif, ;
+}
+
+.font-open-sans{
+  font-family: open-sans; 
+}
