@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Dashboard from "../components/Dashboard";
+import myContext from '../context/myContext';
 
 const Films = () => {
-  const [films, setFilms] = useState([]);
+  //const [films, setFilms] = useState([]);
   const [viewMode, setViewMode] = useState("grid");
   const [searchText, setSearchText] = useState("");
+  const { subItems, setSubItems } = useContext(myContext);
 
   useEffect(() => {
     const fetchFilms = async () => {
       try {
         const response = await axios.get("https://swapi.dev/api/films/");
-        setFilms(response.data.results);
+        setSubItems(response.data.results);
       } catch (error) {
         console.error("Error fetching films:", error);
       }
@@ -20,9 +22,8 @@ const Films = () => {
     fetchFilms();
   }, []);
 
-  const filteredFilms = films.filter((film) => film.title.toLowerCase().includes(searchText.toLowerCase()));
+  const filteredFilms = subItems.filter((film) => film.title.toLowerCase().includes(searchText.toLowerCase()));
   return (
-    <Dashboard>
       <div className="p-4 bg-[#03123D] min-h-screen">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-white text-2xl font-bold">Films</h1>
@@ -83,7 +84,6 @@ const Films = () => {
           ))}
         </div>
       </div>
-    </Dashboard>
   );
 };
 

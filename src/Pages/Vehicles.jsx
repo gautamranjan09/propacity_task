@@ -1,12 +1,8 @@
-import React from 'react'
-import Dashboard from '../components/Dashboard'
+import React from "react";
+import Dashboard from "../components/Dashboard";
 
 const Vehicles = () => {
-  return (
-    <Dashboard>
-    <div>Vehicles</div>
-    </Dashboard>
-  )
-}
+  return <div>Vehicles</div>;
+};
 
-export default Vehicles
+export default Vehicles;

@@ -16,16 +16,19 @@ function App() {
     <>
       {/* <Header/>
     <Sidebar/> */}
+
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/films" element={<Films />} />
-          <Route path="/people" element={<People />} />
-          <Route path="/planets" element={<Planets />} />
-          <Route path="/species" element={<Species />} />
-          <Route path="/starships" element={<Starships />} />
-          <Route path="/vehicles" element={<Vehicles />} />
-        </Routes>
+        <Dashboard>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/films" element={<Films />} />
+            <Route path="/people" element={<People />} />
+            <Route path="/planets" element={<Planets />} />
+            <Route path="/species" element={<Species />} />
+            <Route path="/starships" element={<Starships />} />
+            <Route path="/vehicles" element={<Vehicles />} />
+          </Routes>
+        </Dashboard>
       </BrowserRouter>
     </>
   );

@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react";
+import Dashboard from "../components/Dashboard";
 
 const Starships = () => {
-  return (
-    <Starships>
-    <div>Starships</div>
-    </Starships>
-  )
-}
+  return <div>Starships</div>;
+};
 
-export default Starships
+export default Starships;

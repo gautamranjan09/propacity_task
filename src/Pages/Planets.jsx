@@ -1,12 +1,8 @@
-import React from 'react'
-import Dashboard from '../components/Dashboard'
+import React from "react";
+import Dashboard from "../components/Dashboard";
 
 const Planets = () => {
-  return (
-    <Dashboard>
-    <div>Planets</div>
-    </Dashboard>
-  )
-}
+  return <div>Planets</div>;
+};
 
-export default Planets
+export default Planets;
