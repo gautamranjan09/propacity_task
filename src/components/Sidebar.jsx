@@ -12,8 +12,14 @@ const Sidebar = ({ isMobileMenuOpen, closeMobileMenu }) => {
     { name: "Vehicles", subItems: ["Vehicle Name", "Vehicle Name"] },
   ];
 
-  const toggleSection = (sectionName) => {
+  const toggleSection = async (sectionName) => {
     setOpenSection(openSection === sectionName ? null : sectionName);
+    try {
+      const response = await axios.get(`https://swapi.dev/api/${sectionName}/`);
+      setFilms(response.data.results);
+    } catch (error) {
+      console.error("Error fetching films:", error);
+    }
   };
 
   return (
