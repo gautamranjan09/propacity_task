@@ -22,11 +22,11 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/films" element={<Films />} />
-            <Route path="/people" element={<People />} />
-            <Route path="/planets" element={<Planets />} />
-            <Route path="/species" element={<Species />} />
-            <Route path="/starships" element={<Starships />} />
-            <Route path="/vehicles" element={<Vehicles />} />
+            <Route path="/people" element={<Films />} />
+            <Route path="/planets" element={<Films />} />
+            <Route path="/species" element={<Films />} />
+            <Route path="/starships" element={<Films />} />
+            <Route path="/vehicles" element={<Films />} />
           </Routes>
         </Dashboard>
       </BrowserRouter>
