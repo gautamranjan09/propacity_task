@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import myContext from "../context/myContext";
+import ItemDetailsSidebar from "./ItemDetailsSidebar";
 import filmReelIcon from "../assets/FilmReel.png";
 import alienIcon from "../assets/Alien.png";
 import planetIcon from "../assets/Planet.png";
@@ -11,7 +12,9 @@ import peopleIcon from "../assets/Users.png";
 
 const Sidebar = ({ isMobileMenuOpen, closeMobileMenu }) => {
   const [openSection, setOpenSection] = useState("");
-  const { subItems, setSubItems } = useContext(myContext);
+  // const [selectedItem, setSelectedItem] = useState(null);
+  // const [isDetailsSidebarOpen, setIsDetailsSidebarOpen] = useState(false);
+  const { subItems, setSubItems, selectedItem, isDetailsSidebarOpen, closeDetailsSidebar, openDetailsSidebar } = useContext(myContext);
   const navigate = useNavigate();
 
   const menuItems = [
@@ -28,7 +31,9 @@ const Sidebar = ({ isMobileMenuOpen, closeMobileMenu }) => {
     navigate(`/${sectionName.toLowerCase()}`);
   };
 
+
   return (
+    <>
     <div
       className={`
         fixed inset-y-0 left-0 z-40 w-64 bg-[#03123D] text-white 
@@ -66,7 +71,7 @@ const Sidebar = ({ isMobileMenuOpen, closeMobileMenu }) => {
             {openSection === item.name && (
               <div className="bg-gray-800/50">
                 {subItems.map((subItem, subIndex) => (
-                  <div key={subIndex} className="pl-6 p-3 hover:bg-gray-800/50 flex justify-between items-center cursor-pointer">
+                  <div key={subIndex} onClick={() => openDetailsSidebar(subItem)} className="pl-6 p-3 hover:bg-gray-800/50 flex justify-between items-center cursor-pointer">
                     <div className="flex items-center gap-2 font-medium text-sm font-inter tracking-[0.5px] text-[#FFFFFF]">
                       {" "}
                       {openSection === "Films" && <img src={filmReelIcon} alt="Film Reel Icon" className="h-[18px] w-[18px]" />}
@@ -88,6 +93,13 @@ const Sidebar = ({ isMobileMenuOpen, closeMobileMenu }) => {
         ))}
       </div>
     </div>
+    {/* Sidebar for item details */}
+    <ItemDetailsSidebar 
+    isOpen={isDetailsSidebarOpen}
+    onClose={closeDetailsSidebar}
+    item={selectedItem}
+  />
+  </>
   );
 };
 

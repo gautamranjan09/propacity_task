@@ -4,7 +4,7 @@ import Dashboard from "./components/Dashboard";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import HomePage from "./pages/HomePage";
-import Films from "./pages/Films";
+import Categories from "./pages/Categories";
 import People from "./pages/People";
 import Planets from "./pages/Planets";
 import Species from "./pages/Species";
@@ -21,12 +21,12 @@ function App() {
         <Dashboard>
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/films" element={<Films />} />
-            <Route path="/people" element={<Films />} />
-            <Route path="/planets" element={<Films />} />
-            <Route path="/species" element={<Films />} />
-            <Route path="/starships" element={<Films />} />
-            <Route path="/vehicles" element={<Films />} />
+            <Route path="/films" element={<Categories />} />
+            <Route path="/people" element={<Categories />} />
+            <Route path="/planets" element={<Categories />} />
+            <Route path="/species" element={<Categories />} />
+            <Route path="/starships" element={<Categories />} />
+            <Route path="/vehicles" element={<Categories />} />
           </Routes>
         </Dashboard>
       </BrowserRouter>

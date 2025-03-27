@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import myContext from "../context/myContext";
 import { useLocation } from "react-router-dom";
+import ItemDetailsSidebar from "../components/ItemDetailsSidebar";
 import filmReelIcon from "../assets/FilmReel.png";
 import alienIcon from "../assets/Alien.png";
 import planetIcon from "../assets/Planet.png";
@@ -10,9 +11,9 @@ import vehicleIcon from "../assets/CarProfile.png";
 import peopleIcon from "../assets/Users.png";
 
 
-const Films = () => {
+const Categories = () => {
   const [viewMode, setViewMode] = useState("grid");
-  const { subItems, setSubItems } = useContext(myContext);
+  const { subItems, setSubItems, selectedItem, isDetailsSidebarOpen, openDetailsSidebar, closeDetailsSidebar } = useContext(myContext);
   const [data, setData] = useState({
     item: "",
     name: "",
@@ -23,7 +24,7 @@ const Films = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const fetchFilms = async () => {
+    const fetchCategories = async () => {
       try {
         const response = await axios.get(`https://swapi.dev/api${location.pathname}/`);
         setSubItems(response.data.results);
@@ -77,12 +78,13 @@ const Films = () => {
           });
         }
       } catch (error) {
-        console.error("Error fetching films:", error);
+        console.error("Error fetching Categories:", error);
       }
     };
 
-    fetchFilms();
+    fetchCategories();
   }, [location.pathname]);
+
 
   return (
     <div className="bg-[#03123D] min-h-screen p-4">
@@ -103,7 +105,7 @@ const Films = () => {
       {viewMode === "grid" && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {subItems.map((item, index) => (
-            <div key={`${item[data.name.toLowerCase()]}${index}`} className="flex flex-col gap-1 rounded-lg overflow-hidden shadow-lg max-h-[250px] max-w-[394px]">
+            <div key={`${item[data.name.toLowerCase()]}${index}`} onClick={() => openDetailsSidebar(item)} className="flex flex-col gap-1 rounded-lg overflow-hidden shadow-lg max-h-[250px] max-w-[394px]">
               <div className="h-48 w-full bg-white/10 flex items-center justify-center">
                 <span className="text-white text-center">Film Poster</span>
               </div>
@@ -157,8 +159,16 @@ const Films = () => {
           ))}
         </div>
       )}
+
+      {/* Sidebar for item details */}
+      <ItemDetailsSidebar 
+        isOpen={isDetailsSidebarOpen}
+        onClose={closeDetailsSidebar}
+        item={selectedItem}
+      />
+      
     </div>
   );
 };
 
-export default Films;
+export default Categories;
