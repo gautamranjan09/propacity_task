@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import RenderDetailFields from "./renderDetailFields";
+import RenderDetailFields from "./RenderDetailFields";
 
 const ItemDetailsSidebar = ({ isOpen, onClose, item }) => {
   const [details, setDetails] = useState(null);
