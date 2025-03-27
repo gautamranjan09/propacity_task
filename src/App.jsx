@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
-import HomePage from "./Pages/HomePage";
-import Categories from "./pages/Categories";
+import HomePage from "./pages/HomePage";
+import Categories from "./pages/Categories.jsx";
 
 function App() {
   return (
