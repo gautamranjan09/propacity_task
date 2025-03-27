@@ -3,13 +3,13 @@ import "./App.css";
 import Dashboard from "./components/Dashboard";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
-import Categories from "./pages/Categories";
 import People from "./pages/People";
 import Planets from "./pages/Planets";
 import Species from "./pages/Species";
 import Starships from "./pages/Starships";
 import Vehicles from "./pages/Vehicles";
 import HomePage from "./Pages/HomePage";
+import Categories from "./pages/Categories";
 
 function App() {
   return (
