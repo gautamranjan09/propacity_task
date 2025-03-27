@@ -7,9 +7,6 @@ import Categories from "./pages/Categories";
 function App() {
   return (
     <>
-      {/* <Header/>
-    <Sidebar/> */}
-
       <BrowserRouter>
         <Dashboard>
           <Routes>
