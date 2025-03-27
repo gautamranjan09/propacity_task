@@ -14,7 +14,7 @@ const Sidebar = ({ isMobileMenuOpen, closeMobileMenu }) => {
   const [openSection, setOpenSection] = useState("");
   // const [selectedItem, setSelectedItem] = useState(null);
   // const [isDetailsSidebarOpen, setIsDetailsSidebarOpen] = useState(false);
-  const { subItems, setSubItems, selectedItem, isDetailsSidebarOpen, closeDetailsSidebar, openDetailsSidebar } = useContext(myContext);
+  const { subItems, openDetailsSidebar } = useContext(myContext);
   const navigate = useNavigate();
 
   const menuItems = [
@@ -94,11 +94,7 @@ const Sidebar = ({ isMobileMenuOpen, closeMobileMenu }) => {
       </div>
     </div>
     {/* Sidebar for item details */}
-    <ItemDetailsSidebar 
-    isOpen={isDetailsSidebarOpen}
-    onClose={closeDetailsSidebar}
-    item={selectedItem}
-  />
+    <ItemDetailsSidebar />
   </>
   );
 };

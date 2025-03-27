@@ -13,7 +13,7 @@ import peopleIcon from "../assets/Users.png";
 
 const Categories = () => {
   const [viewMode, setViewMode] = useState("grid");
-  const { subItems, setSubItems, selectedItem, isDetailsSidebarOpen, openDetailsSidebar, closeDetailsSidebar } = useContext(myContext);
+  const { subItems, setSubItems, openDetailsSidebar } = useContext(myContext);
   const [data, setData] = useState({
     item: "",
     name: "",
@@ -161,11 +161,7 @@ const Categories = () => {
       )}
 
       {/* Sidebar for item details */}
-      <ItemDetailsSidebar 
-        isOpen={isDetailsSidebarOpen}
-        onClose={closeDetailsSidebar}
-        item={selectedItem}
-      />
+      <ItemDetailsSidebar />
       
     </div>
   );
