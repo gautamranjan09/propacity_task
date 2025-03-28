@@ -14,8 +14,6 @@ import starwarIcon from "../assets/star_war_icon.png";
 
 const Sidebar = ({ isMobileMenuOpen, closeMobileMenu }) => {
   const [openSection, setOpenSection] = useState("");
-  // const [selectedItem, setSelectedItem] = useState(null);
-  // const [isDetailsSidebarOpen, setIsDetailsSidebarOpen] = useState(false);
   const { subItems, openDetailsSidebar } = useContext(myContext);
   const navigate = useNavigate();
 

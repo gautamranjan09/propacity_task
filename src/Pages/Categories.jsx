@@ -16,7 +16,7 @@ import gridIcon from "../assets/grid.png";
 
 const Categories = () => {
   const [viewMode, setViewMode] = useState("list");
-  const { subItems, setSubItems, openDetailsSidebar } = useContext(myContext);
+  const { subItems, setSubItems, openDetailsSidebar, filteredItems } = useContext(myContext);
   const [data, setData] = useState({
     item: "",
     name: "",
@@ -25,6 +25,15 @@ const Categories = () => {
     description_3: "",
   });
   const location = useLocation();
+
+  const itemsToDisplay =
+    filteredItems.length > 0
+      ? subItems.filter((item) => {
+          const searchValue = filteredItems.toLowerCase();
+          const name = (item.name || item.title || "").toLowerCase();
+          return name.includes(searchValue);
+        })
+      : subItems;
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -95,8 +104,18 @@ const Categories = () => {
         <h1 className="text-white text-2xl font-bold">{data.item}</h1>
         <div className="flex items-center">
           <div className="flex font-medium text-sm tracking-[0.5px] font-inter border border-[#DEDEDE] rounded">
-            <button onClick={() => setViewMode("grid")} className={`p-1 transition-all duration-300 ease-out flex items-center gap-1 group relative ${viewMode === "grid" ? "bg-[#F1F1F5] text-[#696974]" : "hover:bg-[#F1F1F5]/80"}`}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className={`transition-colors duration-300 ${viewMode === "grid" ? "fill-[#696974]" : "fill-[#F1F1F5] group-hover:fill-[#696974]"}`}>
+            <button
+              onClick={() => setViewMode("grid")}
+              className={`p-1 transition-all duration-300 ease-out flex items-center gap-1 group relative ${viewMode === "grid" ? "bg-[#F1F1F5] text-[#696974]" : "hover:bg-[#F1F1F5]/80"}`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                className={`transition-colors duration-300 ${viewMode === "grid" ? "fill-[#696974]" : "fill-[#F1F1F5] group-hover:fill-[#696974]"}`}
+              >
                 <g id="View grid">
                   <path
                     id="Vector"
@@ -106,8 +125,18 @@ const Categories = () => {
               </svg>
               <span className={`transition-all duration-300 ${viewMode === "grid" ? "opacity-100" : "opacity-0 w-0 overflow-hidden"}`}>Grid</span>
             </button>
-            <button onClick={() => setViewMode("list")} className={`p-1 transition-all duration-300 ease-out flex items-center gap-1 group relative ${viewMode === "list" ? "bg-[#F1F1F5] text-[#696974]" : " hover:bg-[#F1F1F5]/80"}`}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" className={`transition-colors duration-300 ${viewMode === "list" ? "fill-[#696974]" : "fill-[#F1F1F5] group-hover:fill-[#696974]"}`}>
+            <button
+              onClick={() => setViewMode("list")}
+              className={`p-1 transition-all duration-300 ease-out flex items-center gap-1 group relative ${viewMode === "list" ? "bg-[#F1F1F5] text-[#696974]" : " hover:bg-[#F1F1F5]/80"}`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                className={`transition-colors duration-300 ${viewMode === "list" ? "fill-[#696974]" : "fill-[#F1F1F5] group-hover:fill-[#696974]"}`}
+              >
                 <g id="View list">
                   <path
                     fillRule="evenodd"
@@ -124,7 +153,7 @@ const Categories = () => {
 
       {viewMode === "grid" && (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {subItems.map((item, index) => (
+          {itemsToDisplay.map((item, index) => (
             <div key={`${item[data.name.toLowerCase()]}${index}`} onClick={() => openDetailsSidebar(item)} className="flex flex-col gap-1 rounded-lg shadow-lg max-h-[250px] cursor-pointer">
               <div className="h-48 w-full bg-white/10 flex items-center justify-center rounded-lg overflow-hidden">
                 {/* <span className="text-white text-center rounded-lg">Film Poster</span> */}
@@ -141,7 +170,7 @@ const Categories = () => {
                   <p className="text-[#FFFFFF] font-medium text-sm font-inter tracking-[0.5px]">{item?.title || item?.name}</p>
                 </div>
                 <div className="relative">
-                  <ThreeDotDropdown />
+                  <ThreeDotDropdown item={item} />
                 </div>
               </div>
             </div>
@@ -156,7 +185,7 @@ const Categories = () => {
             <span>{data.description_1}</span>
             <span>{data.description_3}</span>
           </div>
-          {subItems.map((item, index) => (
+          {itemsToDisplay.map((item, index) => (
             <div
               key={`${item[data.name.toLowerCase()]}${index}`}
               onClick={() => openDetailsSidebar(item)}
@@ -176,7 +205,7 @@ const Categories = () => {
               <div className="flex justify-between items-center">
                 <span>{item[data.description_2]}</span>
                 <div className="relative transition-opacity">
-                  <ThreeDotDropdown />
+                  <ThreeDotDropdown item={item} />
                 </div>
               </div>
             </div>
