@@ -160,7 +160,7 @@ const Categories = () => {
             <div
               key={`${item[data.name.toLowerCase()]}${index}`}
               onClick={() => openDetailsSidebar(item)}
-              className="grid grid-cols-3 text-[#FFFFFF] py-2 px-3 border-b border-[#DEDEDE] bg-[#03123D] hover:bg-[#1E2B4D] relative group font-medium text-sm tracking-[0.5px] transition-all ease-in-out duration-300"
+              className="grid grid-cols-3 text-[#FFFFFF] py-2 px-3 border-b border-[#DEDEDE] bg-[#03123D] hover:bg-[#1E2B4D] relative font-medium text-sm tracking-[0.5px] transition-all ease-in-out duration-300"
             >
               <span className="flex gap-2 items-center">
                 {" "}
@@ -175,7 +175,7 @@ const Categories = () => {
               <span className="flex items-center">{item[data.description_1.toLowerCase()]}</span>
               <div className="flex justify-between items-center">
                 <span>{item[data.description_2]}</span>
-                <div className="relative opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="relative transition-opacity">
                   <ThreeDotDropdown />
                 </div>
               </div>

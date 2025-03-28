@@ -1,4 +1,11 @@
 import React, { useState } from 'react';
+import deleteIcon from '../assets/delete.svg';
+import downloadIcon from '../assets/download.svg';
+import moveIcon from '../assets/move.svg';
+import renameIcon from '../assets/rename.svg';
+import shareIcon from '../assets/share.svg';
+import viewIcon from '../assets/view.svg';
+import privateIcon from '../assets/private.svg';
 
 const ThreeDotDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,56 +32,49 @@ const ThreeDotDropdown = () => {
       {/* Dropdown menu */}
       {isOpen && (
         <div 
-          className="absolute right-0 top-full z-30 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200"
+          className="absolute right-0 top-full z-30 w-[174px] bg-[#FFFFFF] rounded-sm shadow-lg border border-[#F1F1F5]"
           onClick={(e) => e.stopPropagation()} // Prevent closing when clicking menu
         >
-          <ul className="py-1 text-black">
+          <ul className="p-2 flex flex-col gap-1 text-[#252C32] font-inter text-[12px] font-medium leading-5 tracking-[0.5px]">
             <li>
-              <button className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
+              <button className="w-full text-left px-2 py-1 hover:bg-gray-100 flex items-center gap-2">
+               <img src={viewIcon} alt="View Icon" className="w-4 h-4" />
                 View
               </button>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
+              <button className="w-full text-left px-2 py-1 hover:bg-gray-100 flex items-center gap-2">
+              <img src={downloadIcon} alt="View Icon" className="w-4 h-4" />
                 Download
               </button>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                </svg>
+              <button className="w-full text-left px-2 py-1 hover:bg-gray-100 flex items-center gap-2">
+              <img src={renameIcon} alt="View Icon" className="w-4 h-4" />
                 Rename
               </button>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                </svg>
+              <button className="w-full text-left px-2 py-1 hover:bg-gray-100 flex items-center gap-2">
+              <img src={shareIcon} alt="View Icon" className="w-4 h-4" />
                 Share Link
               </button>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
-                </svg>
+              <button className="w-full text-left px-2 py-1 hover:bg-gray-100 flex items-center gap-2">
+              <img src={moveIcon} alt="View Icon" className="w-4 h-4" />
                 Move
               </button>
             </li>
             <li>
-              <button className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center text-red-500">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                </svg>
+              <button className="w-full text-left px-2 py-1 hover:bg-gray-100 flex items-center gap-2">
+              <img src={privateIcon} alt="View Icon" className="w-4 h-4" />
+                Mark Private
+              </button>
+            </li>
+            <li>
+              <button className="w-full text-left px-2 py-1 hover:bg-gray-100 flex items-center text-[#F15454] gap-2">
+                <img src={deleteIcon} alt="View Icon" className="w-4 h-4" />
                 Delete
               </button>
             </li>
