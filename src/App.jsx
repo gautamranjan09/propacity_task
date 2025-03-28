@@ -3,6 +3,7 @@ import "./App.css";
 import Dashboard from "./components/Dashboard";
 import HomePage from "./Pages/HomePage.jsx";
 import Categories from "./Pages/Categories.jsx";
+import DeleteModal from "./components/DeleteModal.jsx";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/starships" element={<Categories />} />
             <Route path="/vehicles" element={<Categories />} />
           </Routes>
+          <DeleteModal/>
         </Dashboard>
       </BrowserRouter>
     </>
