@@ -14,6 +14,8 @@ const myContext = createContext({
   itemToDelete: null,
   filteredItems: [],
   setFilteredItems: () => {},
+  activeDropdownItem: null,
+  setActiveDropdownItem: () => {},
 });
 
 export default myContext;

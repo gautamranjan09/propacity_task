@@ -8,6 +8,7 @@ const MyProvider = ({ children }) => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState(null);
   const [filteredItems, setFilteredItems] = useState([]);
+  const [activeDropdownItem, setActiveDropdownItem] = useState(null);
 
   const openDetailsSidebar = (item) => {
     setSelectedItem(item);
@@ -60,6 +61,8 @@ const MyProvider = ({ children }) => {
         itemToDelete,
         filteredItems,
         setFilteredItems,
+        activeDropdownItem,
+        setActiveDropdownItem,
       }}
     >
       {children}
