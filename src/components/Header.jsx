@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import starwarIcon from "../assets/star_war_icon.png";
 import vectorIcon from "../assets/Vector.png";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ toggleMobileMenu }) => {
   const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
   return (
     <header className="bg-[#03123D] w-full p-4 flex justify-between items-center">
@@ -27,7 +29,7 @@ const Header = ({ toggleMobileMenu }) => {
             <line x1="3" y1="18" x2="21" y2="18"></line>
           </svg>
         </button>
-        <img src={starwarIcon} alt="starwar Logo" className="w-18 h-9" />
+        <img onClick={()=>navigate("/")}  src={starwarIcon} alt="starwar Logo" className="w-18 h-9" />
       </div>
       <div>
         <div className="w-40 md:w-52 h-8 border border-[#FFFFFF] rounded-sm text-[#FFFFFF] flex items-center gap-2 py-1 px-2">

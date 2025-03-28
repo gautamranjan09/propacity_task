@@ -30,16 +30,16 @@
       const value = details[key];
 
       return (
-        <div key={index} className="mb-4">
-          <label className="block text-xs text-gray-400 mb-1">
+        <div key={index} className="flex flex-col gap-[10px]">
+          <label className="font-roboto font-normal text-sm">
             {keyNameMap[key] || key.replace(/_/g, " ").replace(/\b\w/g, (l) => l.toUpperCase())}
           </label>
-          <textarea
-            value={value}
-            readOnly
-             rows={value.length > 60 ? 21 : 1}
-            className="w-full bg-[#1E293B] text-white px-3 py-2 rounded-md border-none resize-none"
-          />
+          <div
+            // value={value}
+            // readOnly
+            //  rows={value.length > 60 ? 21 : 1}
+            className="w-full bg-[#FAFAFB] text-black px-4 text-xs leading-5 py-[10px] tracking-[0.1px] font-normal rounded-md border border-[#F1F1F5]"
+          >{value}</div>
         </div>
       );
     });

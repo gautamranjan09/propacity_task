@@ -24,7 +24,7 @@ const Dashboard = ({children}) => {
 
         {/* Sidebar */}
         <Sidebar isMobileMenuOpen={isMobileMenuOpen} closeMobileMenu={closeMobileMenu} />
-        <div className="flex-1 bg-[#03123D] overflow-auto ml-0 lg:ml-64">
+        <div className="flex-1 bg-[#03123D] overflow-auto mx-auto scrollbar scrollbar-hover:scrollbar-thumb-[#22387a] scrollbar-active:scrollbar-track-[#69abf3] ">
         {/* Main Content Area */}
         {children}
         </div> 
